@@ -6,6 +6,16 @@
 #include "Item.h"
 #include "Weapon.generated.h"
 
+USTRUCT(BlueprintType)
+struct FWeaponConfig
+{
+	GENERATED_USTRUCT_BODY()
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Config)
+	float TimeBetweenShots;
+
+};
+
 /**
  * 
  */
