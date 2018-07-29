@@ -14,6 +14,11 @@ class WEAPONS_API AWeapon : public AItem
 {
 	GENERATED_BODY()
 	
+public:
+
+	AWeapon();
+
+	virtual void Use() override;
 	
 	
 	

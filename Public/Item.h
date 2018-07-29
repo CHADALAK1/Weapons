@@ -23,6 +23,12 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+	virtual void Use();
+
+	virtual void Drop();
+
+	virtual void Pickup();
+
 	
 	
 };

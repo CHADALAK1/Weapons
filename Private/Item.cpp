@@ -25,3 +25,18 @@ void AItem::Tick(float DeltaTime)
 
 }
 
+void AItem::Use()
+{
+
+}
+
+void AItem::Drop()
+{
+
+}
+
+void AItem::Pickup()
+{
+
+}
+

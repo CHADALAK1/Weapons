@@ -5,3 +5,12 @@
 
 
 
+AWeapon::AWeapon()
+{
+
+}
+
+void AWeapon::Use()
+{
+
+}
