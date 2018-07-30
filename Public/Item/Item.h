@@ -23,6 +23,10 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+	/*
+	* Use
+	* Designed to be the function to interact, use, or consume Item object
+	*/
 	virtual void Use();
 
 	virtual void Drop();

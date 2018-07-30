@@ -6,10 +6,23 @@
 #include "Item.h"
 #include "Weapon.generated.h"
 
+UENUM(BlueprintType)
+enum class EProjectileType : uint8
+{
+	E_None			UMETA(DisplayName = "None"),
+	E_Melee			UMETA(DisplayName = "Melee"),
+	E_Projectile	UMETA(DisplayName = "Projectile"),
+	E_Trace			UMETA(DisplayName = "Trace")
+};
+
 USTRUCT(BlueprintType)
 struct FWeaponConfig
 {
 	GENERATED_USTRUCT_BODY()
+
+	//Projectile type of the Weapon
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Config)
+	EProjectileType ProjectileType;
 
 	//Time Between shots of the weapon
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Config)
@@ -31,11 +44,16 @@ class WEAPONS_API AWeapon : public AItem
 	
 public:
 
+	//Call this to fire the weapon. Reason for this design
+	//is for the sake of having the weapon be an item and "Use" the weapon
 	virtual void Use() override;
+
+	virtual void Equip() {}
+
+	virtual void UnEquip() {}
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Config)
 	FWeaponConfig WeaponConfig;
-	
 
 protected:
 

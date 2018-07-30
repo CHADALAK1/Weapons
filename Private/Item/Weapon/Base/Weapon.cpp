@@ -7,7 +7,7 @@
 
 void AWeapon::Fire()
 {
-
+	
 }
 
 void AWeapon::Use()
