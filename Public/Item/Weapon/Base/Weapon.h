@@ -24,6 +24,10 @@ struct FWeaponConfig
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Config)
 	EProjectileType ProjectileType;
 
+	//Name of the socket to fire from (if any)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Config)
+	FName SocketName;
+
 	//Time Between shots of the weapon
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Config)
 	float TimeBetweenShots;
@@ -48,8 +52,10 @@ public:
 	//is for the sake of having the weapon be an item and "Use" the weapon
 	virtual void Use() override;
 
+	//Equip the Weapon
 	virtual void Equip() {}
 
+	//UnEquip the weapon
 	virtual void UnEquip() {}
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Config)
