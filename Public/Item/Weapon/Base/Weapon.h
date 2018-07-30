@@ -11,8 +11,13 @@ struct FWeaponConfig
 {
 	GENERATED_USTRUCT_BODY()
 
+	//Time Between shots of the weapon
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Config)
 	float TimeBetweenShots;
+
+	//The distance of the weapon
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Config)
+	float ShotDistance;
 
 };
 
@@ -26,10 +31,13 @@ class WEAPONS_API AWeapon : public AItem
 	
 public:
 
-	AWeapon();
-
 	virtual void Use() override;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Config)
+	FWeaponConfig WeaponConfig;
 	
-	
-	
+
+protected:
+
+	virtual void Fire();
 };

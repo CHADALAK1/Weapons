@@ -5,7 +5,7 @@
 
 
 
-AWeapon::AWeapon()
+void AWeapon::Fire()
 {
 
 }
