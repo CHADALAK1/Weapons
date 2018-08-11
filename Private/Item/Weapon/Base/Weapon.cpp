@@ -1,9 +1,13 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "Weapon.h"
+#include "Components/Ammo/AmmoComponent.h"
 
 
-
+AWeapon::AWeapon()
+{
+	AmmoComponent = CreateDefaultSubobject<UAmmoComponent>(TEXT("AmmoComponent"));
+}
 
 void AWeapon::Fire()
 {
@@ -37,5 +41,6 @@ void AWeapon::MeleeFire()
 
 void AWeapon::Use()
 {
-
+	Super::Use();
+	Fire();
 }
