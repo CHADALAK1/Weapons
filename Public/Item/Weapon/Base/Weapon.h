@@ -64,4 +64,10 @@ public:
 protected:
 
 	virtual void Fire();
+
+	virtual void ProjectileFire();
+
+	virtual void TraceFire();
+
+	virtual void MeleeFire();
 };
