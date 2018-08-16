@@ -48,7 +48,9 @@ struct FWeaponConfig
 };
 
 /**
- * 
+ * Weapon
+ * This class inherits from Item in case one wishes to be able to pick up and store this
+ * object in an inventory.
  */
 UCLASS()
 class WEAPONS_API AWeapon : public AItem
