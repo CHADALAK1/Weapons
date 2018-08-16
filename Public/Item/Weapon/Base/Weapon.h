@@ -81,13 +81,13 @@ protected:
 	virtual void Fire();
 
 	//Function to handle shooting a projectile
-	virtual void ProjectileFire();
+	virtual void ProjectileFire() {}
 
 	//Function to Handle firing a Line Trace
-	virtual void TraceFire();
+	virtual void TraceFire() {}
 
 	//Function to handle Melee Firing
-	virtual void MeleeFire();
+	virtual void MeleeFire() {}
 
 public:
 

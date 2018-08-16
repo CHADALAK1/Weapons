@@ -24,21 +24,6 @@ void AWeapon::Fire()
 	}
 }
 
-void AWeapon::ProjectileFire()
-{
-
-}
-
-void AWeapon::TraceFire()
-{
-
-}
-
-void AWeapon::MeleeFire()
-{
-
-}
-
 void AWeapon::Use()
 {
 	Super::Use();
