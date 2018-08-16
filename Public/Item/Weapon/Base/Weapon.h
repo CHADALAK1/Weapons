@@ -21,27 +21,27 @@ struct FWeaponConfig
 {
 	GENERATED_USTRUCT_BODY()
 
-	//Projectile type of the Weapon
+	/*Projectile type of the Weapon*/
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Config)
 	EProjectileType ProjectileType;
 
-	//Name of the socket to fire from (if any)
+	/*Name of the socket to fire from (if any)*/
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Config)
 	FName SocketName;
 
-	//Cost of each fire to use this weapon
+	/*Cost of each fire to use this weapon*/
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Config)
 	int ShotCost;
 
-	//Time Between shots of the weapon
+	/*Time Between shots of the weapon*/
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Config)
 	float TimeBetweenShots;
 
-	//The distance of the weapon
+	/*The distance of the weapon*/
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Config)
 	float ShotDistance;
 
-	//The distance of the weapon
+	/*The cone spread of the weapon*/
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Config)
 	float WeaponSpread;
 
@@ -64,31 +64,40 @@ public:
 
 	AWeapon();
 
-	//Call this to fire the weapon. Reason for this design
-	//is for the sake of having the weapon be an item and "Use" the weapon
+	/*Call this to fire the weapon. Reason for this design
+	 is for the sake of having the weapon be an item and "Use" the weapon
+	*/
 	virtual void Use() override;
 
-	//Equip the Weapon
+	/*Equip the Weapon */
 	virtual void Equip() {}
 
-	//UnEquip the weapon
+	/*Equip the weapon*/
 	virtual void UnEquip() {}
+
+	/*
+	* Attaches Weapon to Pawn via SkeletalMeshComponent
+	* @param PawnMesh  SkeletalMeshComponent of the pawn
+	* @param _Pawn  Pawn to check if it's the correct owner
+	* @param SocketName  Socket name to attach weapon to
+	*/
+	void AttachToPawn(USkeletalMeshComponent *PawnMesh, APawn *_Pawn, FName SocketName);
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Config)
 	FWeaponConfig WeaponConfig;
 
 protected:
 
-	//Main Function to fire Weapon
+	/*Main Function to fire Weapon*/
 	virtual void Fire();
 
-	//Function to handle shooting a projectile
+	/*Function to handle shooting a projectile*/
 	virtual void ProjectileFire() {}
 
-	//Function to Handle firing a Line Trace
+	/*Function to Handle firing a Line Trace*/
 	virtual void TraceFire() {}
 
-	//Function to handle Melee Firing
+	/*Function to handle Melee Firing*/
 	virtual void MeleeFire() {}
 
 public:
