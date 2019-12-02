@@ -113,14 +113,20 @@ public:
 	/////////////////INTERFACE CALLS/////////////
 
 	/*Implemented here for any use. Can override to be 'Used' in
-	 * anyway possible. 
+	 * anyway possible. (not implemented)
 	*/
 	virtual void Use_Implementation() override {}
 
 	/*Main Function to fire Weapon*/
 	virtual void Fire_Implementation() override;
 
-	/*Reload the weapon*/
+	/*Main Function to fire secondary option (not implemented)*/
+	virtual void SecondaryFire_Implementation() override {}
+
+	/*Main Function to Aim Weapon(not implemented)*/
+	virtual void Aim_Implementation(bool _Aim) override {}
+
+	/*Reload the weapon(not implemented)*/
 	virtual void Reload_Implementation() override;
 
 	////////////////////////////////////////////
