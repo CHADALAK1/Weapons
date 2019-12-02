@@ -4,10 +4,11 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "Interfaces/ItemInterface.h"
 #include "Item.generated.h"
 
 UCLASS()
-class WEAPONS_API AItem : public AActor
+class WEAPONS_API AItem : public AActor, public IItemInterface
 {
 	GENERATED_BODY()
 	
@@ -23,16 +24,9 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-	/*
-	* Use
-	* Designed to be the function to interact, use, or consume Item object
-	*/
-	virtual void Use();
-
-	virtual void Drop();
-
-	virtual void Pickup();
-
-	
+	/////////////INTERFACE CALLS///////////////
+	virtual void Use_Implementation() override;
+	virtual void Drop_Implementation() override;
+	virtual void Pickup_Implementation() override;
 	
 };

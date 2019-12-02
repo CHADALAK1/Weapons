@@ -8,13 +8,3 @@ AStaticMeshWeapon::AStaticMeshWeapon()
 {
 	Mesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Mesh"));
 }
-
-void AStaticMeshWeapon::Use()
-{
-
-}
-
-void AStaticMeshWeapon::Fire()
-{
-
-}

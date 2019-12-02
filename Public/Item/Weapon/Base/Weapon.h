@@ -69,11 +69,6 @@ public:
 
 	AWeapon();
 
-	/*Call this to fire the weapon. Reason for this design
-	 is for the sake of having the weapon be an item and "Use" the weapon
-	*/
-	virtual void Use() override;
-
 	/*Equip the Weapon */
 	virtual void Equip() {}
 
@@ -93,9 +88,6 @@ public:
 
 protected:
 
-	/*Main Function to fire Weapon*/
-	virtual void Fire();
-
 	/*Function to handle shooting a projectile*/
 	virtual void ProjectileFire() {}
 
@@ -105,9 +97,27 @@ protected:
 	/*Function to handle Melee Firing*/
 	virtual void MeleeFire() {}
 
+	/* Plays the weapon sound
+	* @param Sound  Weapon sound to be played back as an UAudioComponent
+	*/
 	UAudioComponent *PlayWeaponSound(USoundCue *Sound);
 
 public:
+
+	/////////////////INTERFACE CALLS/////////////
+
+	/*Implemented here for any use. Can override to be 'Used' in
+	 * anyway possible. 
+	*/
+	virtual void Use_Implementation() override {}
+
+	/*Main Function to fire Weapon*/
+	virtual void Fire_Implementation() override;
+
+	/*Reload the weapon*/
+	virtual void Reload_Implementation() override;
+
+	////////////////////////////////////////////
 
 	FORCEINLINE UAmmoComponent *GetAmmoComponent() const { return AmmoComponent; }
 };

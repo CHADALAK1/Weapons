@@ -24,11 +24,7 @@ public:
 
 	ASkeletalMeshWeapon();
 
-	virtual void Use() override;
-
 protected:
-
-	virtual void Fire() override;
 
 	virtual void TraceFire() override;
 

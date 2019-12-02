@@ -25,17 +25,17 @@ void AItem::Tick(float DeltaTime)
 
 }
 
-void AItem::Use()
+void AItem::Use_Implementation()
 {
 
 }
 
-void AItem::Drop()
+void AItem::Drop_Implementation()
 {
 
 }
 
-void AItem::Pickup()
+void AItem::Pickup_Implementation()
 {
 
 }

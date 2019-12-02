@@ -10,16 +10,6 @@ ASkeletalMeshWeapon::ASkeletalMeshWeapon()
 	Mesh = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("Mesh"));
 }
 
-void ASkeletalMeshWeapon::Use()
-{
-	Super::Use();
-}
-
-void ASkeletalMeshWeapon::Fire()
-{
-	Super::Fire();
-}
-
 void ASkeletalMeshWeapon::TraceFire()
 {
 	Super::TraceFire();

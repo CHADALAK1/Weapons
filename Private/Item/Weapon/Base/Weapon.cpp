@@ -12,7 +12,17 @@ AWeapon::AWeapon()
 	AmmoComponent = CreateDefaultSubobject<UAmmoComponent>(TEXT("AmmoComponent"));
 }
 
-void AWeapon::Fire()
+UAudioComponent * AWeapon::PlayWeaponSound(USoundCue *Sound)
+{
+	UAudioComponent *AC = NULL;
+	if (Sound)
+	{
+		AC = UGameplayStatics::SpawnSoundAttached(Sound, this->GetRootComponent());
+	}
+	return AC;
+}
+
+void AWeapon::Fire_Implementation()
 {
 	switch (WeaponConfig.ProjectileType)
 	{
@@ -27,20 +37,9 @@ void AWeapon::Fire()
 	}
 }
 
-UAudioComponent * AWeapon::PlayWeaponSound(USoundCue *Sound)
+void AWeapon::Reload_Implementation()
 {
-	UAudioComponent *AC = NULL;
-	if (Sound)
-	{
-		AC = UGameplayStatics::SpawnSoundAttached(Sound, this->GetRootComponent());
-	}
-	return AC;
-}
 
-void AWeapon::Use()
-{
-	Super::Use();
-	Fire();
 }
 
 void AWeapon::AttachToPawn(APawn *_Pawn, const FAttachmentTransformRules AttachRules, FName SocketName)

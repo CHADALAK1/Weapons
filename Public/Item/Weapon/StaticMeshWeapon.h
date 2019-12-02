@@ -21,11 +21,7 @@ public:
 
 	AStaticMeshWeapon();
 
-	virtual void Use() override;
-
 protected:
-
-	virtual void Fire() override;
 
 public:
 
