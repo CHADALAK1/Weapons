@@ -4,8 +4,13 @@
 
 #include "CoreMinimal.h"
 #include "Item.h"
+#include "Interfaces/WeaponInterface.h"
 #include "Weapon.generated.h"
 
+
+//Forward Declarations
+class UAudioComponent;
+class USoundCue;
 
 UENUM(BlueprintType)
 enum class EProjectileType : uint8
@@ -53,7 +58,7 @@ struct FWeaponConfig
  * object in an inventory.
  */
 UCLASS()
-class WEAPONS_API AWeapon : public AItem
+class WEAPONS_API AWeapon : public AItem, public IWeaponInterface
 {
 	GENERATED_BODY()
 
@@ -77,11 +82,11 @@ public:
 
 	/*
 	* Attaches Weapon to Pawn via SkeletalMeshComponent
-	* @param PawnMesh  SkeletalMeshComponent of the pawn
 	* @param _Pawn  Pawn to check if it's the correct owner
+	* @param AttachRules  Attachment type for the weapon (i.e., hard attach, keep relative transforms, etc)
 	* @param SocketName  Socket name to attach weapon to
 	*/
-	void AttachToPawn(USkeletalMeshComponent *PawnMesh, APawn *_Pawn, FName SocketName);
+	void AttachToPawn(APawn *_Pawn, const FAttachmentTransformRules AttachRules, FName SocketName);
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Config)
 	FWeaponConfig WeaponConfig;
@@ -99,6 +104,8 @@ protected:
 
 	/*Function to handle Melee Firing*/
 	virtual void MeleeFire() {}
+
+	UAudioComponent *PlayWeaponSound(USoundCue *Sound);
 
 public:
 

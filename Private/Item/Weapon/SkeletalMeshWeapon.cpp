@@ -41,7 +41,6 @@ FHitResult ASkeletalMeshWeapon::WeaponTrace(const FVector &TraceFrom, const FVec
 	static FName WeaponFireTag = FName(TEXT("WeaponTrace"));
 
 	FCollisionQueryParams TraceParams(WeaponFireTag, true, Instigator);
-	TraceParams.bTraceAsyncScene = true;
 	TraceParams.bReturnPhysicalMaterial = true;
 	TraceParams.AddIgnoredActor(this);
 

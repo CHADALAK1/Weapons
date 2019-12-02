@@ -3,7 +3,9 @@
 #include "Weapon.h"
 #include "Components/SkeletalMeshComponent.h"
 #include "Components/Ammo/AmmoComponent.h"
+#include "Sound/SoundCue.h"
 
+#include "Kismet/GameplayStatics.h"
 
 AWeapon::AWeapon()
 {
@@ -25,19 +27,26 @@ void AWeapon::Fire()
 	}
 }
 
+UAudioComponent * AWeapon::PlayWeaponSound(USoundCue *Sound)
+{
+	UAudioComponent *AC = NULL;
+	if (Sound)
+	{
+		AC = UGameplayStatics::SpawnSoundAttached(Sound, this->GetRootComponent());
+	}
+	return AC;
+}
+
 void AWeapon::Use()
 {
 	Super::Use();
 	Fire();
 }
 
-void AWeapon::AttachToPawn(USkeletalMeshComponent *PawnMesh, APawn *_Pawn, FName SocketName)
+void AWeapon::AttachToPawn(APawn *_Pawn, const FAttachmentTransformRules AttachRules, FName SocketName)
 {
 	if (_Pawn && IsOwnedBy(_Pawn))
 	{
-		if (PawnMesh)
-		{
-			//TODO: Attach to Pawn
-		}
+		AttachToActor(_Pawn, AttachRules, SocketName);
 	}
 }
