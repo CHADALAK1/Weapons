@@ -1,4 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+
 
 #pragma once
 
@@ -29,6 +29,10 @@ struct FWeaponConfig
 	/*Projectile type of the Weapon*/
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Config)
 	EProjectileType ProjectileType;
+
+	/*Projectile reference to spawn (if able)*/
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Config)
+	TSubclassOf<AActor> Projectile;
 
 	/*Name of the socket to fire from (if any)*/
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Config)
@@ -69,6 +73,9 @@ public:
 
 	AWeapon();
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Weapon")
+	APawn *CurrentOwner;
+
 	/*Equip the Weapon */
 	virtual void Equip() {}
 
@@ -77,11 +84,10 @@ public:
 
 	/*
 	* Attaches Weapon to Pawn via SkeletalMeshComponent
-	* @param _Pawn  Pawn to check if it's the correct owner
 	* @param AttachRules  Attachment type for the weapon (i.e., hard attach, keep relative transforms, etc)
 	* @param SocketName  Socket name to attach weapon to
 	*/
-	void AttachToPawn(APawn *_Pawn, const FAttachmentTransformRules AttachRules, FName SocketName);
+	void AttachToPawn(const FAttachmentTransformRules AttachRules, FName SocketName);
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Config)
 	FWeaponConfig WeaponConfig;

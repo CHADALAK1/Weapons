@@ -1,4 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+//EXAMPLE SKELETAL MESH IMPLEMENTATION OF THE WEAPON
 
 #pragma once
 

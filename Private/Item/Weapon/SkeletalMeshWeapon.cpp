@@ -13,17 +13,20 @@ ASkeletalMeshWeapon::ASkeletalMeshWeapon()
 void ASkeletalMeshWeapon::TraceFire()
 {
 	Super::TraceFire();
-	const int32 RandomSeed = FMath::Rand();
-	FRandomStream WeaponRandomStream(RandomSeed);
-	const float CurrentSpread = WeaponConfig.WeaponSpread;
-	const float SpreadCone = FMath::DegreesToRadians(WeaponConfig.WeaponSpread * 0.5);
-	const FVector AimDir = GetMesh()->GetSocketRotation(WeaponConfig.SocketName).Vector();
-	const FVector StartTrace = GetMesh()->GetSocketLocation(WeaponConfig.SocketName);
-	const FVector ShootDir = WeaponRandomStream.VRandCone(AimDir, SpreadCone, SpreadCone);
-	const FVector EndTrace = StartTrace + ShootDir * WeaponConfig.ShotDistance;
-	const FHitResult Impact = WeaponTrace(StartTrace, EndTrace);
+	if (GetMesh())
+	{
+		const int32 RandomSeed = FMath::Rand();
+		FRandomStream WeaponRandomStream(RandomSeed);
+		const float CurrentSpread = WeaponConfig.WeaponSpread;
+		const float SpreadCone = FMath::DegreesToRadians(WeaponConfig.WeaponSpread * 0.5);
+		const FVector AimDir = GetMesh()->GetSocketRotation(WeaponConfig.SocketName).Vector();
+		const FVector StartTrace = GetMesh()->GetSocketLocation(WeaponConfig.SocketName);
+		const FVector ShootDir = WeaponRandomStream.VRandCone(AimDir, SpreadCone, SpreadCone);
+		const FVector EndTrace = StartTrace + ShootDir * WeaponConfig.ShotDistance;
+		const FHitResult Impact = WeaponTrace(StartTrace, EndTrace);
 
-	ProcessInstantHit(Impact, StartTrace, ShootDir, RandomSeed, CurrentSpread);
+		ProcessInstantHit(Impact, StartTrace, ShootDir, RandomSeed, CurrentSpread);
+	}
 }
 
 FHitResult ASkeletalMeshWeapon::WeaponTrace(const FVector &TraceFrom, const FVector &TraceTo) const

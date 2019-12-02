@@ -35,17 +35,20 @@ void AWeapon::Fire_Implementation()
 	case EProjectileType::E_Melee:
 		MeleeFire();
 	}
+	//...Can add more implementation here, 
+	//.. but wanted to make this generic for now
 }
 
 void AWeapon::Reload_Implementation()
 {
-
+	//Add Reload Implementation here
 }
 
-void AWeapon::AttachToPawn(APawn *_Pawn, const FAttachmentTransformRules AttachRules, FName SocketName)
+void AWeapon::AttachToPawn(const FAttachmentTransformRules AttachRules, FName SocketName)
 {
-	if (_Pawn && IsOwnedBy(_Pawn))
+	//if upon pickup, the weapon has an owner, attach to the owner
+	if (GetOwner() != nullptr)
 	{
-		AttachToActor(_Pawn, AttachRules, SocketName);
+		AttachToActor(GetOwner(), AttachRules, SocketName);
 	}
 }

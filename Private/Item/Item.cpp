@@ -27,16 +27,16 @@ void AItem::Tick(float DeltaTime)
 
 void AItem::Use_Implementation()
 {
-
+	//Add custom Use implementation here
 }
 
 void AItem::Drop_Implementation()
 {
-
+	//Add custom Drop implementation here
 }
 
 void AItem::Pickup_Implementation()
 {
-
+	//Add custom Pickup implementation here
 }
 
